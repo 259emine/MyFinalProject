@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -34,14 +35,24 @@ namespace DataAccess.Concrete.InMemory
             //unutma biz LınQ kullanıyoruz foreach yerine 
             Product productToDelete = 
 
-            productToDelete = _products.SingleOrDefault(p=>p.ProductId ==product.ProductId);
+            productToDelete = _products.SingleOrDefault(p=>p.ProductId == product.ProductId);
             _products.Remove(productToDelete);
             
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAll()
         {
             return _products;
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAllByCategory(int categoryId)
@@ -52,7 +63,7 @@ namespace DataAccess.Concrete.InMemory
         public void Update(Product product) //burda güncelleme yapıyoruz
         {
             //Gönderdiğim ürün id'sine sahip olan listedeki  ürünü bul
-            Product productToUpdate = _products.SingleOrDefault(p=>p.ProductId ==product.ProductId);
+            Product productToUpdate = _products.SingleOrDefault(p=>p.ProductId == product.ProductId);
             productToUpdate.ProductName = product.ProductName;
             productToUpdate.CategoryId = product.CategoryId;
             productToUpdate.UnitPrice = product.UnitPrice;
