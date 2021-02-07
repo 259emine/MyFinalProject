@@ -1,14 +1,16 @@
-﻿using Entities.Abstract;
+﻿
+using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
     //generic constraint-kısıtlama diyoruz yani generic
     //class :referans tipli
     //IEntity:IEntity olabilir veya IEntity implemente eden bir nesne olabilir.
+    //new() :new'lenebilir olmalı
    public interface IEntityRepository<T> where T:class,IEntity,new()     //ben buraya ne yazarsam tip o olur
     {
 
