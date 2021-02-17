@@ -35,10 +35,10 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour==22)
-            {
+            if (DateTime.Now.Hour == 14)
+             {
                 return new ErrorDataResult<List<Product>>(Massages.MaintenanceTime);
-            }
+             }
 
 
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Massages.ProductsListed);
@@ -61,11 +61,6 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductDetaiIDto>> GetProductDetaiIs()
         {
-
-            if (DateTime.Now.Hour == 23)
-            {
-                return new ErrorDataResult<List<ProductDetaiIDto>>(Massages.MaintenanceTime);
-            }
 
             return new SuccessDataResult<List<ProductDetaiIDto>> (_productDal.GetProductDetaiIs());
         }
