@@ -19,7 +19,7 @@ namespace ConsoleUI
         private static void CategoryTest()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            foreach (var category in categoryManager.GetAll())
+            foreach (var category in categoryManager.GetAll().Data)
             {
                 Console.WriteLine(category.CategoryName);
             }
@@ -27,7 +27,8 @@ namespace ConsoleUI
 
         private static void ProductText()
         {
-            ProductManager productManager = new ProductManager(new EfproductDal());
+            ProductManager productManager = new ProductManager(new EfproductDal()
+                ,new CategoryManager(new EfCategoryDal()));
 
             var result = productManager.GetProductDetaiIs();
 
